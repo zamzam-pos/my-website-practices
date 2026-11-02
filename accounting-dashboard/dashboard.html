@@ -1,53 +1,144 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Ledgerly Dashboard</title>
+<!doctype html><html class="light"><head><meta charset="utf-8"><title>Ledgerly — Finance Dashboard</title>
 <style>
-:root{--bg:#f4f6fb;--card:#fff;--ink:#14213d;--mut:#6b7794;--line:#e6eaf3;--p:#5b5bf0;--g:#16a34a;--r:#e5484d;--o:#f59e0b;--side:#14213d}
-.dark{--bg:#0d1226;--card:#161d3a;--ink:#eef1ff;--mut:#8f9bc4;--line:#252e55;--side:#0a0e1d}
-*{box-sizing:border-box;margin:0;font-family:Inter,Segoe UI,Arial,sans-serif}
-body{background:var(--bg);color:var(--ink);width:1440px;height:900px;display:flex;overflow:hidden}
-aside{width:230px;background:var(--side);color:#cfd6f5;padding:24px 18px}
-.logo{font-weight:800;font-size:22px;color:#fff;margin-bottom:30px}.logo b{color:#8b8bff}
-aside div.i{padding:11px 14px;border-radius:10px;margin-bottom:6px;font-size:14px}
-aside div.a{background:linear-gradient(90deg,#5b5bf0,#7c5cff);color:#fff}
-main{flex:1;padding:24px 30px}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-h1{font-size:24px}.sub{color:var(--mut);font-size:13px;margin-top:3px}
-.btn{background:var(--p);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600}
-.row{display:grid;gap:16px;margin-bottom:16px}.k{grid-template-columns:repeat(4,1fr)}.m{grid-template-columns:2fr 1fr}.b{grid-template-columns:1.4fr 1fr 1fr}
-.c{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(20,33,61,.05)}
-.l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.05em}.v{font-size:28px;font-weight:800;margin:6px 0}
-.d{font-size:12px;font-weight:600}.up{color:var(--g)}.dn{color:var(--r)}
-.hd{font-weight:700;margin-bottom:12px;font-size:15px}
-table{width:100%;font-size:13px;border-collapse:collapse}td,th{padding:9px 4px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--mut);font-weight:500;font-size:12px}
-.tag{padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600}
-.pd{background:#16a34a22;color:var(--g)}.ov{background:#e5484d22;color:var(--r)}.pe{background:#f59e0b22;color:var(--o)}
-.bar{height:8px;border-radius:5px;background:var(--line);margin:6px 0 14px}.bar i{display:block;height:100%;border-radius:5px;background:var(--p)}
-</style></head><body class="light">
-<aside><div class="logo">Ledger<b>ly</b></div>
-<div class="i a">▦ Dashboard</div><div class="i">⇄ Transactions</div><div class="i">🧾 Invoices</div><div class="i">💳 Expenses</div><div class="i">🏦 Banking</div><div class="i">📊 Reports</div><div class="i">👥 Payroll</div><div class="i">% Taxes</div><div class="i">⚙ Settings</div></aside>
+:root{--bg:#f3f5fa;--card:#fff;--ink:#0f172a;--ink2:#334155;--mut:#8591a8;--line:#e8ecf4;--brand:#4f46e5;--brand2:#7c3aed;--teal:#0ea5a4;--g:#10b981;--r:#f43f5e;--o:#f59e0b;--side:#fff;--sh:0 1px 2px rgba(15,23,42,.04),0 8px 24px rgba(15,23,42,.05);--chip:#f1f4fa}
+.dark{--bg:#0a0f1f;--card:#111936;--ink:#f1f5ff;--ink2:#c3cbe3;--mut:#7d89ad;--line:#1f2a52;--side:#0d1430;--sh:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25);--chip:#18214a}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,"Segoe UI",-apple-system,"Helvetica Neue","Liberation Sans","DejaVu Sans",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);width:1600px;height:1120px;display:flex;overflow:hidden;font-size:14px}
+aside{width:248px;background:var(--side);border-right:1px solid var(--line);padding:26px 18px;display:flex;flex-direction:column}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:21px;letter-spacing:-.03em;padding:0 8px 28px}
+.logo i{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#fff;font-style:normal;font-size:18px;box-shadow:0 6px 16px rgba(79,70,229,.35)}
+.sec{font-size:11px;letter-spacing:.09em;color:var(--mut);font-weight:600;padding:14px 12px 8px}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:11px;color:var(--ink2);font-weight:500;margin-bottom:2px}
+.nav svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.75}
+.nav.on{background:linear-gradient(90deg,rgba(79,70,229,.12),rgba(124,58,237,.05));color:var(--brand);font-weight:650}.nav.on svg{opacity:1}
+.nav em{margin-left:auto;background:var(--r);color:#fff;font-style:normal;font-size:11px;font-weight:700;border-radius:10px;padding:1px 7px}
+.up-card{margin-top:auto;border-radius:16px;padding:18px;background:linear-gradient(135deg,#312e81,#6d28d9);color:#fff;position:relative;overflow:hidden}
+.up-card:after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.12)}
+.up-card b{display:block;font-size:15px;margin-bottom:5px}.up-card p{font-size:12px;opacity:.85;line-height:1.5;margin-bottom:12px}
+.up-card span{background:#fff;color:#4338ca;font-weight:700;font-size:12px;padding:7px 14px;border-radius:9px;display:inline-block}
+main{flex:1;padding:22px 30px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.top{display:flex;align-items:center;gap:14px}
+.srch{flex:1;max-width:420px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:var(--mut);display:flex;gap:10px;align-items:center;box-shadow:var(--sh)}
+.srch kbd{margin-left:auto;background:var(--chip);border-radius:6px;padding:2px 7px;font-size:11px;font-family:inherit}
+.sp{flex:1}.ic{width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--sh);position:relative}
+.ic svg{width:19px;height:19px;stroke:var(--ink2);fill:none;stroke-width:1.8;stroke-linecap:round}.ic u{position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--r);border:2px solid var(--card)}
+.me{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:5px 14px 5px 5px;box-shadow:var(--sh)}
+.av{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#f43f5e);color:#fff;font-weight:700;display:grid;place-items:center}
+.me b{display:block;font-size:13px}.me small{color:var(--mut);font-size:11px}
+.head{display:flex;align-items:flex-end;justify-content:space-between}
+h1{font-size:27px;letter-spacing:-.03em;font-weight:750}.sub{color:var(--mut);margin-top:4px}
+.acts{display:flex;gap:10px}.b1,.b2{padding:11px 18px;border-radius:11px;font-weight:650;font-size:13px}
+.b2{background:var(--card);border:1px solid var(--line);color:var(--ink2);box-shadow:var(--sh)}
+.b1{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 8px 20px rgba(79,70,229,.35)}
+.grid{display:grid;gap:18px}.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:1.9fr 1fr}.g3{grid-template-columns:1.25fr 1fr 1fr}
+.c{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--sh);min-width:0}
+.k{display:flex;flex-direction:column;gap:2px}
+.kt{display:flex;align-items:center;gap:10px;color:var(--mut);font-weight:550}
+.ki{width:34px;height:34px;border-radius:10px;display:grid;place-items:center}.ki svg{width:17px;height:17px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.kv{font-size:29px;font-weight:780;letter-spacing:-.035em;margin-top:12px}
+.kb{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.pill{font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px}.pu{background:rgba(16,185,129,.13);color:#059669}.pd{background:rgba(244,63,94,.12);color:#e11d48}
+.kb small{color:var(--mut);font-size:12px}
+.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.ch h3{font-size:16px;font-weight:700;letter-spacing:-.02em}.ch small{color:var(--mut);display:block;margin-top:3px;font-size:12px;font-weight:450}
+.seg{display:flex;background:var(--chip);border-radius:10px;padding:3px}.seg span{padding:5px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--mut)}.seg .on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(15,23,42,.1)}
+.lg{display:flex;gap:18px;font-size:12px;color:var(--ink2);font-weight:550;margin-bottom:6px}.lg i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px}
+.hero{background:linear-gradient(140deg,#1e1b4b 0%,#3730a3 55%,#6d28d9 100%);color:#fff;border:none;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%)}
+.hero .l{opacity:.75;font-size:13px;font-weight:550}.hero .v{font-size:36px;font-weight:780;letter-spacing:-.04em;margin:8px 0 6px}
+.hero .t{font-size:12.5px;opacity:.9}.hero .t b{background:rgba(255,255,255,.18);padding:3px 9px;border-radius:20px;margin-right:6px}
+.bk{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:13px;padding:11px 13px;margin-top:11px}
+.bk i{width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.2);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:13px}
+.bk div{flex:1;font-size:13px;font-weight:600}.bk small{display:block;opacity:.65;font-weight:450;font-size:11.5px;margin-top:1px}.bk span{font-weight:700}
+table{width:100%;border-collapse:collapse}th{text-align:left;color:var(--mut);font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:0 0 10px}
+td{padding:11px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink2)}td b{color:var(--ink);font-weight:650}
+.cl{display:flex;align-items:center;gap:10px}.cl i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:12px;color:#fff}
+.tag{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:20px}.t1{background:rgba(16,185,129,.13);color:#059669}.t2{background:rgba(244,63,94,.12);color:#e11d48}.t3{background:rgba(245,158,11,.15);color:#b45309}
+.tx{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}.tx:first-of-type{border:none}
+.tx i{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-style:normal;font-size:16px}
+.tx div{flex:1}.tx b{display:block;font-size:13px;font-weight:650}.tx small{color:var(--mut);font-size:11.5px}.tx span{font-weight:700;font-size:13px}
+.pr{margin-bottom:15px}.pr div{display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;margin-bottom:7px;color:var(--ink2)}.pr span{color:var(--mut);font-weight:550}
+.pb{height:8px;border-radius:6px;background:var(--chip)}.pb i{display:block;height:100%;border-radius:6px}
+</style></head><body>
+<aside>
+<div class="logo"><i>L</i>Ledgerly</div>
+<div class="sec">MAIN</div>
+<div class="nav on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/></svg>Dashboard</div>
+<div class="nav"><svg viewBox="0 0 24 24"><path d="M7 7h13M7 7l3-3M7 7l3 3M17 17H4M17 17l-3-3M17 17l-3 3"/></svg>Transactions</div>
+<div class="nav"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"/></svg>Invoices<em>4</em></div>
+<div class="nav"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>Expenses</div>
+<div class="nav"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18"/></svg>Banking</div>
+<div class="sec">INSIGHTS</div>
+<div class="nav"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Reports</div>
+<div class="nav"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6M17 5a3.5 3.5 0 010 7M22 20c0-3-2-5-4-5.5"/></svg>Payroll</div>
+<div class="nav"><svg viewBox="0 0 24 24"><path d="M19 5L5 19M7 8a2 2 0 100-.01M17 18a2 2 0 100-.01"/></svg>Taxes</div>
+<div class="nav"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>Settings</div>
+<div class="up-card"><b>Upgrade to Pro</b><p>AI forecasting, multi-entity consolidation &amp; audit trail.</p><span>See plans →</span></div>
+</aside>
 <main>
-<div class="top"><div><h1>Good morning, Ali 👋</h1><div class="sub">Financial overview · FY 2026 · All entities</div></div><div class="btn">+ New Invoice</div></div>
-<div class="row k">
-<div class="c"><div class="l">Revenue</div><div class="v">$248,900</div><div class="d up">▲ 12.4% vs last month</div></div>
-<div class="c"><div class="l">Expenses</div><div class="v">$141,230</div><div class="d dn">▲ 4.1% vs last month</div></div>
-<div class="c"><div class="l">Net Profit</div><div class="v">$107,670</div><div class="d up">▲ 21.8% vs last month</div></div>
-<div class="c"><div class="l">Cash Balance</div><div class="v">$512,340</div><div class="d up">▲ 6.2% vs last month</div></div></div>
-<div class="row m">
-<div class="c"><div class="hd">Revenue vs Expenses</div>
-<svg viewBox="0 0 700 220" width="100%" height="220"><g stroke="var(--line)"><path d="M0 40H700M0 90H700M0 140H700M0 190H700"/></g>
-<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b5bf0" stop-opacity=".35"/><stop offset="1" stop-color="#5b5bf0" stop-opacity="0"/></linearGradient></defs>
-<path d="M0 150C60 130 100 160 160 110S260 90 320 100 420 40 480 60 600 30 700 20V200H0Z" fill="url(#g)"/>
-<path d="M0 150C60 130 100 160 160 110S260 90 320 100 420 40 480 60 600 30 700 20" fill="none" stroke="#5b5bf0" stroke-width="3"/>
-<path d="M0 170C80 160 120 175 180 150S280 140 340 145 440 110 500 120 620 100 700 95" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="6 5"/></svg>
-<div class="sub">● Revenue &nbsp; <span style="color:#f59e0b">● Expenses</span></div></div>
-<div class="c"><div class="hd">Expense Breakdown</div>
-<svg viewBox="0 0 120 120" width="150" style="display:block;margin:0 auto 10px"><circle cx="60" cy="60" r="42" fill="none" stroke="#5b5bf0" stroke-width="18" stroke-dasharray="110 264"/><circle cx="60" cy="60" r="42" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="70 264" stroke-dashoffset="-110"/><circle cx="60" cy="60" r="42" fill="none" stroke="#16a34a" stroke-width="18" stroke-dasharray="50 264" stroke-dashoffset="-180"/><circle cx="60" cy="60" r="42" fill="none" stroke="#e5484d" stroke-width="18" stroke-dasharray="34 264" stroke-dashoffset="-230"/></svg>
-<div class="sub">● Payroll 42% &nbsp;<span style="color:#f59e0b">● Rent 27%</span> &nbsp;<span style="color:#16a34a">● Software 19%</span> &nbsp;<span style="color:#e5484d">● Other 12%</span></div></div></div>
-<div class="row b">
-<div class="c"><div class="hd">Recent Invoices</div><table><tr><th>Client</th><th>Amount</th><th>Due</th><th>Status</th></tr>
-<tr><td>Acme Corp</td><td>$12,400</td><td>Nov 12</td><td><span class="tag pd">Paid</span></td></tr>
-<tr><td>Globex Ltd</td><td>$8,950</td><td>Nov 05</td><td><span class="tag ov">Overdue</span></td></tr>
-<tr><td>Initech</td><td>$5,300</td><td>Nov 20</td><td><span class="tag pe">Pending</span></td></tr>
-<tr><td>Umbrella Co</td><td>$21,000</td><td>Nov 28</td><td><span class="tag pe">Pending</span></td></tr></table></div>
-<div class="c"><div class="hd">Budget Progress</div><div class="sub">Marketing · 78%</div><div class="bar"><i style="width:78%"></i></div><div class="sub">Operations · 54%</div><div class="bar"><i style="width:54%;background:#16a34a"></i></div><div class="sub">R&amp;D · 91%</div><div class="bar"><i style="width:91%;background:#e5484d"></i></div></div>
-<div class="c"><div class="hd">Upcoming</div><div class="sub" style="line-height:2.1">📅 VAT filing — Nov 15<br>💼 Payroll run — Nov 30<br>🧾 Rent due — Nov 01<br>🏦 Bank reconcile — 3 items</div></div></div>
-</main></body></html>
+<div class="top"><div class="srch"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Search invoices, clients, transactions…<kbd>⌘ K</kbd></div><div class="sp"></div>
+<div class="ic"><svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 0112 0c0 6 3 7 3 7H3s3-1 3-7M10 20a2 2 0 004 0"/></svg><u></u></div>
+<div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-4-7.5M21 4v5h-5"/></svg></div>
+<div class="me"><div class="av">AS</div><div><b>Ali Shaik</b><small>Finance Admin</small></div></div></div>
+<div class="head"><div><h1>Financial Overview</h1><div class="sub">Welcome back, Ali — here's how Zamzam Trading Co. is performing this month.</div></div>
+<div class="acts"><div class="b2">📅 Nov 1 – Nov 30, 2026 ▾</div><div class="b2">⬇ Export</div><div class="b1">+ New Invoice</div></div></div>
+
+<div class="grid g4" id="kpis"></div>
+
+<div class="grid g2">
+<div class="c"><div class="ch"><div><h3>Cash Flow</h3><small>Income vs expenses · last 12 months</small></div><div class="seg"><span>1M</span><span>6M</span><span class="on">12M</span><span>YTD</span></div></div>
+<div class="lg"><span><i style="background:#4f46e5"></i>Income</span><span><i style="background:#f59e0b"></i>Expenses</span><span><i style="background:#10b981"></i>Net cash flow</span></div>
+<svg id="cf" width="100%" viewBox="0 0 900 270"></svg></div>
+<div class="c hero"><div class="l">Total Cash Balance</div><div class="v">$512,340.00</div><div class="t"><b>▲ 6.2%</b>vs last month</div>
+<div class="bk"><i>C</i><div>Chase Business<small>•••• 4821</small></div><span>$286,400</span></div>
+<div class="bk"><i>W</i><div>Wells Fargo Savings<small>•••• 1093</small></div><span>$168,720</span></div>
+<div class="bk"><i>S</i><div>Stripe Balance<small>Pending payout Nov 4</small></div><span>$57,220</span></div></div>
+</div>
+
+<div class="grid g3">
+<div class="c"><div class="ch"><div><h3>Recent Invoices</h3><small>4 need attention</small></div><div class="seg"><span class="on">All</span><span>Overdue</span></div></div>
+<table><tr><th>Client</th><th>Amount</th><th>Due</th><th>Status</th></tr>
+<tr><td><div class="cl"><i style="background:#4f46e5">A</i><b>Acme Corporation</b></div></td><td><b>$12,400</b></td><td>Nov 12</td><td><span class="tag t1">Paid</span></td></tr>
+<tr><td><div class="cl"><i style="background:#f43f5e">G</i><b>Globex Ltd</b></div></td><td><b>$8,950</b></td><td>Nov 05</td><td><span class="tag t2">Overdue</span></td></tr>
+<tr><td><div class="cl"><i style="background:#0ea5a4">I</i><b>Initech Inc.</b></div></td><td><b>$5,300</b></td><td>Nov 20</td><td><span class="tag t3">Pending</span></td></tr>
+<tr><td><div class="cl"><i style="background:#f59e0b">U</i><b>Umbrella Co.</b></div></td><td><b>$21,000</b></td><td>Nov 28</td><td><span class="tag t3">Pending</span></td></tr></table></div>
+<div class="c"><div class="ch"><div><h3>Receivables Aging</h3><small>Total outstanding $64,850</small></div></div>
+<svg id="ag" width="100%" viewBox="0 0 330 190"></svg></div>
+<div class="c"><div class="ch"><div><h3>Latest Activity</h3><small>Synced 2 min ago</small></div></div>
+<div class="tx"><i style="background:rgba(16,185,129,.13)">↙</i><div><b>Payment — Acme Corp</b><small>Chase •••• 4821 · Today</small></div><span style="color:#059669">+$12,400</span></div>
+<div class="tx"><i style="background:rgba(245,158,11,.15)">☁</i><div><b>AWS Services</b><small>Software · Yesterday</small></div><span>−$2,184</span></div>
+<div class="tx"><i style="background:rgba(244,63,94,.12)">🏢</i><div><b>Office Rent</b><small>Rent · Nov 01</small></div><span>−$6,500</span></div>
+<div class="tx"><i style="background:rgba(79,70,229,.12)">👥</i><div><b>Payroll — 18 staff</b><small>Payroll · Oct 31</small></div><span>−$38,900</span></div></div>
+</div>
+</main>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const ico={rev:'<path d="M12 2v20M17 6H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>',exp:'<path d="M7 7h10v10M7 17L17 7"/>',net:'<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>',inv:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"/>'};
+const K=[['Total Revenue','$248,900','+12.4%',1,'#4f46e5','rev','vs $221,400',[3,4,3.6,5,4.6,6,5.8,7.4,7]],
+['Total Expenses','$141,230','+4.1%',0,'#f59e0b','exp','vs $135,700',[5,5.4,5.1,5.8,5.5,6,5.7,6.1,6]],
+['Net Profit','$107,670','+21.8%',1,'#10b981','net','vs $88,400',[2,2.6,2.4,3.4,3.2,4.4,4.2,5.4,6]],
+['Outstanding Invoices','$64,850','−8.3%',2,'#0ea5a4','inv','12 invoices',[7,6.6,6.9,6.2,6.5,5.6,5.8,5.2,5]]];
+document.getElementById('kpis').innerHTML=K.map(k=>{const d=k[7],w=130,h=42,mx=Math.max(...d),mn=Math.min(...d);
+const pts=d.map((v,i)=>[i*w/(d.length-1),h-4-(v-mn)/(mx-mn||1)*(h-10)]);
+const p='M'+pts.map(a=>a.join(',')).join(' L');const id='s'+k[5];
+return `<div class="c k"><div class="kt"><div class="ki" style="background:${k[4]}1f"><svg viewBox="0 0 24 24" stroke="${k[4]}">${ico[k[5]]}</svg></div>${k[0]}</div>
+<div class="kv">${k[1]}</div><div class="kb"><span class="pill ${k[3]?'pu':'pd'}">${k[3]==1?'▲':k[3]==2?'▼':'▲'} ${k[2].replace('+','').replace('−','')}</span><small>${k[6]}</small></div>
+<svg width="100%" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" style="margin-top:12px;height:42px"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${k[4]}" stop-opacity=".28"/><stop offset="1" stop-color="${k[4]}" stop-opacity="0"/></linearGradient></defs><path d="${p} L${w},${h} L0,${h}Z" fill="url(#${id})"/><path d="${p}" fill="none" stroke="${k[4]}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></div>`}).join('');
+// cash flow
+const m=['Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov'],inc=[142,155,148,170,182,176,195,205,198,221,232,249],exp=[98,104,101,112,118,115,124,127,129,136,138,141];
+const W=900,H=270,L=46,B=28,T=10,pw=W-L-6,ph=H-B-T,max=280;let s='';
+for(let i=0;i<=4;i++){const y=T+ph-i/4*ph;s+=`<line x1="${L}" x2="${W}" y1="${y}" y2="${y}" stroke="var(--line)" ${i?'stroke-dasharray="4 5"':''}/><text x="${L-10}" y="${y+4}" text-anchor="end" font-size="11" fill="var(--mut)">$${i*70}k</text>`}
+const bw=16,step=pw/12;
+m.forEach((n,i)=>{const cx=L+step*i+step/2;const hi=inc[i]/max*ph,he=exp[i]/max*ph;
+s+=`<rect x="${cx-bw-2}" y="${T+ph-hi}" width="${bw}" height="${hi}" rx="5" fill="#4f46e5" opacity="${i==11?1:.88}"/><rect x="${cx+2}" y="${T+ph-he}" width="${bw}" height="${he}" rx="5" fill="#f59e0b" opacity="${i==11?1:.88}"/><text x="${cx}" y="${H-8}" text-anchor="middle" font-size="11" fill="var(--mut)">${n}</text>`});
+const pts=inc.map((v,i)=>[L+step*i+step/2,T+ph-(v-exp[i])/max*ph]);
+let d='M'+pts[0];for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],mx=(a[0]+b[0])/2;d+=` C${mx},${a[1]} ${mx},${b[1]} ${b[0]},${b[1]}`}
+s+=`<path d="${d}" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>`;
+pts.forEach((p,i)=>{if(i==11)s+=`<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="#fff" stroke="#10b981" stroke-width="3"/>`});
+const p=pts[11];s+=`<g transform="translate(${p[0]-128},${p[1]-62})"><rect width="118" height="46" rx="10" fill="#0f172a"/><text x="12" y="19" font-size="10.5" fill="#94a3b8">Nov · Net cash flow</text><text x="12" y="37" font-size="15" font-weight="700" fill="#fff">+$107,670</text></g>`;
+document.getElementById('cf').innerHTML=s;
+// aging
+const A=[['Current',34200,'#10b981'],['1–30',18400,'#4f46e5'],['31–60',8900,'#f59e0b'],['60+',3350,'#f43f5e']];let a='';const mxa=36000;
+A.forEach((r,i)=>{const y=14+i*44,w=r[1]/mxa*210;a+=`<text x="0" y="${y+4}" font-size="11.5" fill="var(--mut)" font-weight="600">${r[0]}${i?' days':''}</text><rect x="0" y="${y+12}" width="330" height="14" rx="7" fill="var(--chip)"/><rect x="0" y="${y+12}" width="${w}" height="14" rx="7" fill="${r[2]}"/><text x="330" y="${y+4}" text-anchor="end" font-size="12.5" font-weight="700" fill="var(--ink)">$${r[1].toLocaleString()}</text>`});
+document.getElementById('ag').innerHTML=a;
+</script></body></html>
